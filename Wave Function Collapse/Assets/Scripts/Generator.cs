@@ -10,6 +10,7 @@ public class Generator : MonoBehaviour
 
     private void Start()
     {
+        //Prepare reader 
         reader = new InputReader(inputTilemap, false);
     }
 }

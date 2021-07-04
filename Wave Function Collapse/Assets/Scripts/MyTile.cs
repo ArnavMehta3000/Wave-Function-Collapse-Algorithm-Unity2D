@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+// Custom class type for storing tile info: tile, cell position and unique tile neighbours
 public class MyTile
 {
     public TileBase tile;
@@ -12,13 +13,15 @@ public class MyTile
     //Neighbours to this tile
     TileBase top, down, left, right;
 
-
+    
+    //Constructor
     public MyTile(TileBase tile, Vector3Int cellPosition)
     {
         this.tile = tile;
         this.cellPosition = cellPosition;
     }
 
+    //Calculate and set tile neighbours from input map
     public void SetNeighbours(Tilemap inputMap)
     {
         Vector3Int
@@ -36,6 +39,7 @@ public class MyTile
         neighbours = RemoveNull(neighbours);
     }
 
+    //Set tile neighbours by manually passing the 4 neighbours
     public void SetNeighbours(MyTile4 neighbourTiles)
     {
         top = neighbourTiles.top;
@@ -47,6 +51,7 @@ public class MyTile
         neighbours = RemoveNull(neighbours);
     }
 
+    //Remove null values from neighbour lists
     public Neighbours RemoveNull(Neighbours n)
     {
         n.top.RemoveAll(item => item == null);
@@ -58,6 +63,8 @@ public class MyTile
     }
 }
 
+
+//Struct that contain 4 tiles (direct tile neighbours)
 public struct MyTile4
 {
     public TileBase top, down, left, right;
@@ -71,10 +78,13 @@ public struct MyTile4
     }
 }
 
+
+//Struct to hold tile neighbours
 public struct Neighbours
 {
     public List<TileBase> top, down, left, right;
 
+    //Constructor
     public Neighbours(List<TileBase> top, List<TileBase> down, List<TileBase> left, List<TileBase> right)
     {
         this.top = top;
@@ -83,6 +93,7 @@ public struct Neighbours
         this.right = right;
     }
 
+    //Constructor
     public Neighbours(TileBase top = null, TileBase down = null, TileBase left = null, TileBase right = null)
     {
         this.top = new List<TileBase>();
@@ -96,7 +107,7 @@ public struct Neighbours
         this.right.Add(right);
     }
 
-
+    //Function for debugging tile neighbours (optional)
     public void Debug(TileBase tile)
     {
         UnityEngine.Debug.Log("-----Tile: " + tile + "-----");
