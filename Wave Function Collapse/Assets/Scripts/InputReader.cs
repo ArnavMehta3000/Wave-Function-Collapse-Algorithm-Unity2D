@@ -1,7 +1,5 @@
-using System;
-using System.Collections;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -36,9 +34,9 @@ public class InputReader
         {
             Debug.Log("Total My Tiles: " + allMyTiles.Count);
             Debug.Log("Dict size: " + tilesDictionary.Count);
-            
+
             Debug.Log("");
-            
+
             foreach (var item in tilesDictionary)
                 item.Value.Debug(item.Key);
         }

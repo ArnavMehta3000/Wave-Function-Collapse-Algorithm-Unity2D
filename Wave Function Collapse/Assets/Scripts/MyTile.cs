@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -13,7 +12,7 @@ public class MyTile
     //Neighbours to this tile
     TileBase top, down, left, right;
 
-    
+
     //Constructor
     public MyTile(TileBase tile, Vector3Int cellPosition)
     {
@@ -35,7 +34,7 @@ public class MyTile
         left = inputMap.GetTile(cellPosition + LEFT);
         right = inputMap.GetTile(cellPosition + RIGHT);
 
-        neighbours = new Neighbours(top, down, left, right); 
+        neighbours = new Neighbours(top, down, left, right);
         neighbours = RemoveNull(neighbours);
     }
 
